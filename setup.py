@@ -9,9 +9,9 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 
 setup(
-    name='feeds',
+    name='python-django-social',
     version=__version__,
-    packages=['feeds'],
+    packages=['social'],
     include_package_data=True,
     license='BSD License',    # example license
     description='Social scoring of URLs.',
