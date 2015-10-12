@@ -1,0 +1,4 @@
+include LICENSE
+recursive-include social *
+recursive-include docs/source *
+include docs/Makefile
