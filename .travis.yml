@@ -13,7 +13,7 @@ install:
  - pip install coveralls
  - pip install nose
 script:
-  - nosetests --with-coverage
+  - nosetests --with-coverage --cover-package=social
 after_success:
   - coveralls
 notifications:

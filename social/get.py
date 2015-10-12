@@ -12,12 +12,12 @@ import json
 logger = logging.getLogger(__name__)
 
 
-def tweets(post):
+def tweets(url):
     """
 
     """
     twitter_count = "http://urls.api.twitter.com/1/urls/count.json?url=%s"
-    query = twitter_count % (post.link)
+    query = twitter_count % (url)
     resp = requests.get(query)
 
     if resp.status_code == 200:
@@ -26,10 +26,10 @@ def tweets(post):
         raise Exception
 
 
-def linkedin(post):
+def linkedin(url):
     linkedin_count = \
         "http://www.linkedin.com/countserv/count/share?url=%s&format=json"
-    query = linkedin_count % (post.link)
+    query = linkedin_count % (url)
     resp = requests.get(query)
 
     if resp.status_code == 200:
@@ -38,10 +38,10 @@ def linkedin(post):
         raise Exception
 
 
-def facebook(post):
+def facebook(url):
     facebook_count = \
         'http://graph.facebook.com/%s'
-    query = facebook_count % (post.link)
+    query = facebook_count % (url)
     resp = requests.get(query)
 
     if resp.status_code == 200:
@@ -55,14 +55,14 @@ def facebook(post):
         raise Exception
 
 
-def plusone(post):
+def plusone(url):
     queryurl = "https://clients6.google.com/rpc"
     params = {
         "method": "pos.plusones.get",
         "id": "p",
         "params": {
             "nolog": True,
-            "id": "%s" % (post.link),
+            "id": "%s" % (url),
             "source": "widget",
             "userId": "@viewer",
             "groupId": "@self",

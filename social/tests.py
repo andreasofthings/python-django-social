@@ -6,4 +6,6 @@ class Social(TestCase):
         pass
 
     def test_tweet(self):
-        self.assertEqual(1, 1)
+        from social.get import tweets
+        result = tweets("http://neumeier.org")
+        self.assertEqual(type(()), type(result))
