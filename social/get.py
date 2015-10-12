@@ -30,7 +30,7 @@ def tweets(url):
 
 def linkedin(url):
     linkedin_count = \
-        "http://www.linkedin.com/countserv/count/share?url=%s&format=json"
+        "https://www.linkedin.com/countserv/count/share?url=%s&format=json"
     query = linkedin_count % (url)
     resp = requests.get(query)
 
@@ -90,6 +90,7 @@ def plusone(url):
             result = int(
                 result_json['result']['metadata']['globalCounts']['count']
             )
+            logger.debug("stop: counting +1s. Got %s.", result)
     except ValueError as e:
         logger.error(e)
         logger.error(json.dumps(params))
@@ -101,5 +102,4 @@ def plusone(url):
     except KeyError as e:
         raise KeyError(e)
 
-    logger.debug("stop: counting +1s. Got %s.", result)
     return result
