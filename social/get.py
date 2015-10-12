@@ -35,7 +35,9 @@ def linkedin(url):
     resp = requests.get(query)
 
     if resp.status_code == 200:
-        return json.loads(resp.text)['count']
+        return (
+            json.loads(resp.text)['count'],
+        )
     else:
         raise Exception
 
@@ -85,6 +87,9 @@ def plusone(url):
             )
         if resp.status_code == 200:
             result_json = json.loads(resp.text)
+            result = int(
+                result_json['result']['metadata']['globalCounts']['count']
+            )
     except ValueError as e:
         logger.error(e)
         logger.error(json.dumps(params))
@@ -93,11 +98,6 @@ def plusone(url):
         logger.error("""stop: counting +1s. Something weird happened.\n
                      %s
                      """ % e)
-
-    try:
-        result = int(
-            result_json['result']['metadata']['globalCounts']['count']
-        )
     except KeyError as e:
         raise KeyError(e)
 
