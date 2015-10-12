@@ -78,7 +78,7 @@ def plusone(url):
     headers = {
         'Content-type': 'application/json',
     }
-
+    result = 0
     try:
         resp, content = requests.post(
             queryurl,
@@ -102,4 +102,4 @@ def plusone(url):
     except KeyError as e:
         raise KeyError(e)
 
-    return result
+    return (result, )
