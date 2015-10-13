@@ -11,7 +11,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-
+.. autofunction:: tweets
 
 Indices and tables
 ==================
