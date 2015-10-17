@@ -14,7 +14,11 @@ logger = logging.getLogger(__name__)
 
 def tweets(url):
     """
+    .. py:function:: tweets(url)
 
+        Get the number of tweets containing the provided URL.
+
+    .. 
     """
     twitter_count = "http://urls.api.twitter.com/1/urls/count.json?url=%s"
     query = twitter_count % (url)

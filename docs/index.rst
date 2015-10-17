@@ -11,7 +11,11 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+.. automodule: social
 .. autofunction:: tweets
+.. autofunction:: linkedin
+.. autofunction:: facebook
+.. autofunction:: plusone
 
 Indices and tables
 ==================
@@ -19,4 +23,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
