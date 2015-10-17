@@ -11,10 +11,8 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-:module: social
-.. currentmodule: social
 .. automodule: social
-.. autofunction:: tweets
+.. autofunction:: social.tweets
 .. autofunction:: linkedin
 .. autofunction:: facebook
 .. autofunction:: plusone
