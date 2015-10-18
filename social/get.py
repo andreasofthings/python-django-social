@@ -25,7 +25,8 @@ def facebook(url):
         :param str url: The url to query Facebook for.
         :return: the number of shares, likes and comments
         :rtype: Tuple
-        :raises Exception: If response is anything other than `HTTP 200`.
+        :raises Exception: If the Facebook API responds with
+                    anything other than `HTTP 200`.
     """
     facebook_count = \
         'http://graph.facebook.com/%s'
@@ -49,8 +50,11 @@ def linkedin(url):
 
         Get the number of shares on linkedin for the provided URL.
 
+        :param str url: The url to query Linkedin for.
         :return: the number of shares
         :rtype: Tuple
+        :raises Exception: If the Linkedin API responds with
+                    anything other than `HTTP 200`.
     """
     linkedin_count = \
         "https://www.linkedin.com/countserv/count/share?url=%s&format=json"
@@ -72,6 +76,12 @@ def plusone(url):
         Get the number of plusones for the provided URL from Google+.
 
     .. ToDo:: broken.
+
+        :param str url: The url to query Goolge+ for.
+        :return: the number of plusones.
+        :rtype: Tuple
+        :raises Exception: If the Google API responds with
+                    anything other than `HTTP 200`.
     """
     queryurl = "https://clients6.google.com/rpc"
     params = {
@@ -126,6 +136,9 @@ def tweets(url):
 
         :return: the number of tweets
         :rtype: Tuple
+        :rtype: Tuple
+        :raises Exception: If the Twitter API responds with
+                    anything other than `HTTP 200`.
     """
     twitter_count = "http://urls.api.twitter.com/1/urls/count.json?url=%s"
     query = twitter_count % (url)
