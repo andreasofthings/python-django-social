@@ -10,17 +10,8 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
+   get
 
-.. py:currentmodule:: social.get
-.. automodule:: social.get
-
-.. autofunction:: tweets
-
-.. autofunction:: linkedin
-
-.. autofunction:: social.get.facebook
-
-.. autofunction:: social.get.plusone
 
 Indices and tables
 ==================
