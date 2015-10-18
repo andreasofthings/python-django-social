@@ -12,9 +12,13 @@ Contents:
    :maxdepth: 2
 
 .. automodule: social
-.. autofunction:: social.tweets
+.. autofunction:: get.tweets
+
+.. automodule: social.get
 .. autofunction:: linkedin
-.. autofunction:: facebook
+
+.. autofunction:: social.get.facebook
+
 .. autofunction:: plusone
 
 Indices and tables
