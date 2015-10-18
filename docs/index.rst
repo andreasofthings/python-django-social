@@ -11,11 +11,13 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-.. currentmodule: social
-.. automodule: get
+.. py:module:: social.get
+.. automodule:: get
+
+.. py:currentmodule:: social
 .. autofunction:: get.tweets
 
-.. currentmodule: social.get
+.. py:currentmodule:: social.get
 .. autofunction:: linkedin
 
 .. currentmodule: social.get
