@@ -3,6 +3,9 @@
 
 """
 get.py
+======
+
+A collection of functions to query social networks.
 """
 
 import logging
@@ -18,7 +21,7 @@ def tweets(url):
 
         Get the number of tweets containing the provided URL.
 
-    .. 
+    ..
     """
     twitter_count = "http://urls.api.twitter.com/1/urls/count.json?url=%s"
     query = twitter_count % (url)
@@ -33,6 +36,13 @@ def tweets(url):
 
 
 def linkedin(url):
+    """
+    .. py:function:: linkedin(url)
+
+        Get the number of shares on linkedin for the provided URL.
+
+    ..
+    """
     linkedin_count = \
         "https://www.linkedin.com/countserv/count/share?url=%s&format=json"
     query = linkedin_count % (url)
