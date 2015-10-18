@@ -22,7 +22,10 @@ def facebook(url):
         Get the number of shares, likes and comments on facebook
         for the provided URL.
 
-    ..
+        :param str url: The url to query Facebook for.
+        :return: the number of shares, likes and comments
+        :rtype: Tuple
+        :raises Exception: If response is anything other than `HTTP 200`.
     """
     facebook_count = \
         'http://graph.facebook.com/%s'
@@ -46,7 +49,8 @@ def linkedin(url):
 
         Get the number of shares on linkedin for the provided URL.
 
-    ..
+        :return: the number of shares
+        :rtype: Tuple
     """
     linkedin_count = \
         "https://www.linkedin.com/countserv/count/share?url=%s&format=json"
