@@ -12,15 +12,12 @@ Contents:
    :maxdepth: 2
 
 .. py:module:: social.get
-.. automodule:: get
+.. automodule:: social.get
 
 .. py:currentmodule:: social
 .. autofunction:: get.tweets
 
 .. py:currentmodule:: social.get
-.. autofunction:: linkedin
-
-.. currentmodule: social.get
 .. autofunction:: linkedin
 
 .. autofunction:: social.get.facebook
