@@ -11,15 +11,19 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-.. automodule: social
+.. currentmodule: social
+.. automodule: get
 .. autofunction:: get.tweets
 
-.. automodule: social.get
+.. currentmodule: social.get
+.. autofunction:: linkedin
+
+.. currentmodule: social.get
 .. autofunction:: linkedin
 
 .. autofunction:: social.get.facebook
 
-.. autofunction:: plusone
+.. autofunction:: social.get.plusone
 
 Indices and tables
 ==================
