@@ -128,6 +128,23 @@ def plusone(url):
     return (result, )
 
 
+def stumbleupon(url):
+    """
+    .. py:function:: stumbleupon(url : string)
+    
+    
+    .. todo:: Broken.
+    
+    
+    :return: the number of tweets
+    :rtype: Tuple
+    :rtype: Tuple
+    :raises Exception: If the stumbleupon API responds with
+                    anything other than `HTTP 200`.
+    """
+
+    return 0
+
 def tweets(url):
     """
     .. py:function:: tweets(url : string)
