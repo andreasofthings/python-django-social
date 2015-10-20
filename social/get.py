@@ -140,10 +140,6 @@ def stumbleupon(url):
     """
     .. py:function:: stumbleupon(url : string)
 
-
-    .. todo:: Broken.
-
-
     :return: the number of tweets
     :rtype: Tuple
     :rtype: Tuple
@@ -156,9 +152,12 @@ def stumbleupon(url):
     resp = requests.get(query)
 
     if resp.status_code == 200:
-        return (
-            json.loads(resp.text)['result']['views'],
-        )
+        js = json.loads(resp.text)
+        if 'result' in js:
+            if 'views' in js['result']:
+                return js['result']['views']
+            else:
+                return (0, )
     else:
         raise Exception
 
