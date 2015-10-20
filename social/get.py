@@ -6,6 +6,13 @@ get.py
 ======
 
 A collection of functions to query social networks.
+
+This is all very basic, but split out from another project, hence making it
+easier to maintain.
+
+Most of the functions are based on somebody elses findings, in particular:
+https://gist.github.com/jonathanmoore/2640302
+Was very helpful to implement most of the functions.
 """
 
 import logging
@@ -75,13 +82,14 @@ def plusone(url):
 
         Get the number of plusones for the provided URL from Google+.
 
-    .. ToDo:: broken.
-
         :param str url: The url to query Goolge+ for.
         :return: the number of plusones.
         :rtype: Tuple
         :raises Exception: If the Google API responds with
                     anything other than `HTTP 200`.
+
+
+    .. ToDo:: broken.
     """
     queryurl = "https://clients6.google.com/rpc"
     params = {
@@ -131,19 +139,29 @@ def plusone(url):
 def stumbleupon(url):
     """
     .. py:function:: stumbleupon(url : string)
-    
-    
+
+
     .. todo:: Broken.
-    
-    
+
+
     :return: the number of tweets
     :rtype: Tuple
     :rtype: Tuple
     :raises Exception: If the stumbleupon API responds with
                     anything other than `HTTP 200`.
     """
+    stumbleupon = \
+        "http://www.stumbleupon.com/services/1.01/badge.getinfo?url=%s"
+    query = stumbleupon % (url)
+    resp = requests.get(query)
 
-    return 0
+    if resp.status_code == 200:
+        return (
+            json.loads(resp.text)['result']['views'],
+        )
+    else:
+        raise Exception
+
 
 def tweets(url):
     """
@@ -151,8 +169,8 @@ def tweets(url):
 
         Get the number of tweets containing the provided URL.
 
+        :param str url: The url to query Twitter for.
         :return: the number of tweets
-        :rtype: Tuple
         :rtype: Tuple
         :raises Exception: If the Twitter API responds with
                     anything other than `HTTP 200`.
