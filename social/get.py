@@ -168,6 +168,8 @@ def tweets(url):
 
         Get the number of tweets containing the provided URL.
 
+        :ToDo:
+
         :param str url: The url to query Twitter for.
         :return: the number of tweets
         :rtype: Tuple
@@ -176,11 +178,12 @@ def tweets(url):
     """
     twitter_count = "http://urls.api.twitter.com/1/urls/count.json?url=%s"
     query = twitter_count % (url)
-    resp = requests.get(query)
-
-    if resp.status_code == 200:
+    try:
+        resp = requests.get(query)
+        resp.raise_for_status()
+    except requests.exceptions.HTTPError:
+        return (-1,)
+    else:
         return (
             json.loads(resp.text)['count'],
         )
-    else:
-        raise Exception
