@@ -19,8 +19,6 @@ import logging
 import requests
 import json
 
-from requests.packages.urllib3.exceptions import NewConnectionError
-
 logger = logging.getLogger(__name__)
 
 
@@ -181,18 +179,8 @@ def tweets(url):
         :raises Exception: none.
         .. todo: Implement an own counter for URLs through the recommended
         "filter" Streaming-API.
+
+        Old query:
+        query = "http://urls.api.twitter.com/1/urls/count.json?url=%s" % (url)
     """
-    twitter_count = "http://urls.api.twitter.com/1/urls/count.json?url=%s"
-    query = twitter_count % (url)
-    return (0, )  # below is deprecated.
-    try:
-        resp = requests.get(query)
-        resp.raise_for_status()
-    except requests.exceptions.HTTPError:
-        return (-1,)
-    except NewConnectionError:
-        return (-1,)
-    else:
-        return (
-            json.loads(resp.text)['count'],
-        )
+    return (0, )
