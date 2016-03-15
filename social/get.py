@@ -19,6 +19,9 @@ import logging
 import requests
 import json
 
+from requests.packages.urllib3.connection.HTTPConnection \
+    import NewConnectionError
+
 logger = logging.getLogger(__name__)
 
 
@@ -40,7 +43,7 @@ def facebook(url):
     query = facebook_count % (url)
     resp = requests.get(query)
 
-    if resp.status_code == 200:
+    if resp.status_code in (200, 304):
         js = json.loads(resp.text)
         return (
             js.get('shares', 0),
@@ -48,7 +51,7 @@ def facebook(url):
             js.get('comments', 0),
         )
     else:
-        raise Exception
+        raise Exception("Status: %s" % resp.status_code)
 
 
 def linkedin(url):
@@ -68,12 +71,12 @@ def linkedin(url):
     query = linkedin_count % (url)
     resp = requests.get(query)
 
-    if resp.status_code == 200:
+    if resp.status_code in (200, 304):
         return (
             json.loads(resp.text)['count'],
         )
     else:
-        raise Exception
+        raise Exception("Status: %s" % resp.status_code)
 
 
 def plusone(url):
@@ -116,7 +119,7 @@ def plusone(url):
             data=json.dumps(params),
             headers=headers
             )
-        if resp.status_code == 200:
+        if resp.status_code in (200, 304):
             result_json = json.loads(resp.text)
             result = int(
                 result_json['result']['metadata']['globalCounts']['count']
@@ -173,8 +176,8 @@ def tweets(url):
         :param str url: The url to query Twitter for.
         :return: the number of tweets
         :rtype: Tuple
-        :raises Exception: If the Twitter API responds with
-                    anything other than `HTTP 200`.
+        :raises Exception: none.
+        .. todo: should raise appropriate exceptions, though.
     """
     twitter_count = "http://urls.api.twitter.com/1/urls/count.json?url=%s"
     query = twitter_count % (url)
@@ -182,6 +185,8 @@ def tweets(url):
         resp = requests.get(query)
         resp.raise_for_status()
     except requests.exceptions.HTTPError:
+        return (-1,)
+    except NewConnectionError:
         return (-1,)
     else:
         return (
