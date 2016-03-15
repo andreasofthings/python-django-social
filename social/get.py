@@ -36,7 +36,7 @@ def facebook(url):
                     anything other than `HTTP 200`.
     """
     facebook_count = \
-        'http://graph.facebook.com/%s'
+        'http://graph.facebook.com/?ids=%s'
     query = facebook_count % (url)
     resp = requests.get(query)
 
