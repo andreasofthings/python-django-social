@@ -19,8 +19,7 @@ import logging
 import requests
 import json
 
-from requests.packages.urllib3.connection.HTTPConnection \
-    import NewConnectionError
+from requests.packages.urllib3.exceptions import NewConnectionError
 
 logger = logging.getLogger(__name__)
 
