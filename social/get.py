@@ -170,16 +170,21 @@ def tweets(url):
 
         Get the number of tweets containing the provided URL.
 
-        :ToDo:
+        This was deprecated as of November 20. 2015. See here:
+        https://blog.twitter.com/2015/hard-decisions-for-a-sustainable-platform
+
+        Hence, this function always returns (0,) until implemented otherwise.
 
         :param str url: The url to query Twitter for.
         :return: the number of tweets
         :rtype: Tuple
         :raises Exception: none.
-        .. todo: should raise appropriate exceptions, though.
+        .. todo: Implement an own counter for URLs through the recommended
+        "filter" Streaming-API.
     """
     twitter_count = "http://urls.api.twitter.com/1/urls/count.json?url=%s"
     query = twitter_count % (url)
+    return (0, )  # below is deprecated.
     try:
         resp = requests.get(query)
         resp.raise_for_status()
