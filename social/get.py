@@ -47,6 +47,8 @@ def facebook(url):
             js.get('likes', 0),
             js.get('comments', 0),
         )
+    elif resp.status_code in (404,):
+        return (0, 0, 0,)
     else:
         raise Exception("Status: %s" % resp.status_code)
 
